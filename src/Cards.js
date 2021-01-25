@@ -5,14 +5,16 @@ import {db} from "./firebase";
 function Cards({user}){
 
     const[posts,setPosts] = useState([]);
-    
+  
     useEffect(()=>{
+    
       db.collection('Restaurant').doc(user.uid).collection("tables").orderBy('timestamp','asc').onSnapshot(snapshot =>{
         setPosts(snapshot.docs.map(docu =>({
           id: docu.id,
           card: docu.data()
         })));      
       })
+     
     },[]);
   
     return (<div className="grid">
@@ -25,3 +27,4 @@ function Cards({user}){
   };
   
   export default Cards;
+  

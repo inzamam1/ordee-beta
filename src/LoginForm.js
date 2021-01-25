@@ -7,6 +7,7 @@ import Home from './Home';
 import Profile from'./Profile';
 import Settings from './Settings';
 import Support from './Support';
+import Password__Strength from'./Password__Strength';
 
 function LoginForm() {
   const [username, setUsername] = useState("");
@@ -103,7 +104,7 @@ function LoginForm() {
         ) : (
           <div>
             <Route path="/" exact component={Home}>
-            <Home user={user} username={user} />
+            <Home user={user} />
             </Route>
             <Route path="/Settings" component={Settings}>
               <Settings username={user} />
@@ -147,6 +148,7 @@ function LoginForm() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              <Password__Strength password={password}/>
               <button onClick={SignUp}>Sign Up</button>
               
               
@@ -203,4 +205,3 @@ function LoginForm() {
   );
       }
 export default LoginForm;
-
